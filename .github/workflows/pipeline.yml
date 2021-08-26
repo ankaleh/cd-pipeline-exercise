@@ -1,0 +1,35 @@
+name: Deployment pipeline
+
+on:
+  push:
+    branches: [master]
+  pull_request:
+    branches: [master]
+    types: [opened, synchronize] # the workflow will run when a PR into main is opened or updated
+
+jobs:
+  simple_deployment_pipeline:
+    runs-on: ubuntu-18.04
+    steps:
+      - uses: actions/checkout@v2
+
+      - uses: actions/setup-node@v1
+        with:
+          node-version: '12.x'
+      - name: Npm install 
+        run: npm ci && cd ./frontend && npm ci
+        
+      - name: Lint
+        run: npm run lint
+
+      - name: E2E tests
+        uses: cypress-io/github-action@v2
+        with: 
+          working-directory: frontend
+          start: npm run test:e2e, npm run start:test --prefix ./
+          wait-on: 'http://localhost:3000'
+      
+      - name: Build frontend
+        run: npm run build:ui
+
+    

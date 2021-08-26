@@ -68,7 +68,7 @@ blogsRouter.delete('/:id', async (request, response) => {
 
   const deletedBlog = await Blog.findById(request.params.id)
   await Blog.findByIdAndRemove(request.params.id)
-  console.log('Poistetun blogin id: ', deletedBlog._id.toString())
+  console.log('Poistetun blogin id: ', deletedBlog._id.toString())// eslint-disable-line
 
   //poistetaan blogi myös lisääjän blogeista:
   const deletedBlogIndex = await user.blogit.indexOf(deletedBlog)
