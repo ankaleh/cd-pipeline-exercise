@@ -11,7 +11,7 @@ jobs:
   simple_deployment_pipeline:
     runs-on: ubuntu-18.04
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v2 #koodi käyttöön
 
       - uses: actions/setup-node@v1
         with:
@@ -28,6 +28,7 @@ jobs:
           working-directory: frontend
           start: npm start && cd ../ && npm run start:test
           wait-on: 'http://localhost:3000'
+          wait-on-timeout: 300
           command: npm run test:e2e
       
       - name: Build frontend

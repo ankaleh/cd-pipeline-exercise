@@ -73,7 +73,7 @@ describe('When logged in', function() {
 })
 
 describe.only('blogs', function() {
-  it('blogs are odered right', function() {
+  it('blogs are ordered right', function() {
 
     cy.contains('Kirjautumislomake').click()
     cy.contains('Kirjaudu sisään alla olevalla lomakkeella')
