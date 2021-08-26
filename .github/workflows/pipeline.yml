@@ -26,8 +26,9 @@ jobs:
         uses: cypress-io/github-action@v2
         with: 
           working-directory: frontend
-          start: npm run test:e2e, npm run start:test --prefix ./
+          start: npm start, npm run start:test --prefix ./
           wait-on: 'http://localhost:3000'
+          command: npm run test:e2e
       
       - name: Build frontend
         run: npm run build:ui
