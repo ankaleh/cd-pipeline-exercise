@@ -27,7 +27,7 @@ jobs:
         with: 
           working-directory: frontend
           start: npm start, npm run start:test --prefix ../
-          wait-on: 'http://localhost:3000, http://localhost:3001'
+          wait-on: 'http://localhost:3000'
           wait-on-timeout: 300
           command: npm run test:e2e
         env:
