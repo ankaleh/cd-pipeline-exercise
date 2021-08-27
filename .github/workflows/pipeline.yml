@@ -32,6 +32,7 @@ jobs:
           command: npm run test:e2e
         env:
           TEST_MONGODB_URI: ${{secrets.TEST_MONGODB_URI}}
+          SECRET: ${{secrets.SECRET}}
       - name: Build frontend
         run: npm run build:ui
 
