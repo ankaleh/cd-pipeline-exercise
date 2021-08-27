@@ -25,6 +25,9 @@ jobs:
       - name: Build frontend
         run: npm run build:ui
 
+      - name: Only run this if file ./build/index.html exists
+        run: '(test -f ./build/index.html && echo ./build/index.html exists) || echo ./build/index.html does not exist, skipping step'
+
       - name: Deploy to Heroku
         if: ${{ github.event_name == 'push' && !contains(join(toJson(github.event.commits.*.message)), '#skip') }}
         uses: akhileshns/heroku-deploy@v3.12.12
