@@ -44,7 +44,10 @@ if (process.env.NODE_ENV === 'production') {
   console.log('polku buildiin: ', BUILD_PATH) // eslint-disable-line
   app.use(express.static('build'))
   //app.use(express.static('build'))
-  app.get('*', (req,res) => {
+  app.get('/health', (req, res) => {
+    res.send('ok')
+  })
+  app.get('/', (req,res) => {
     res.sendFile(path.join(__dirname, 'build', 'index.html'))
   })
 }

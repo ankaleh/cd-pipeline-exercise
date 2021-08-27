@@ -35,6 +35,14 @@ jobs:
           heroku_api_key: ${{secrets.HEROKU_API_KEY}}
           heroku_app_name: "duckburg-blogs" #Must be unique in Heroku
           heroku_email: ${{secrets.MAIL}}
-          #healthcheck: ""
-          #checkstring: "ok"
-          #rollbackonhealthcheckfailed: true
+          healthcheck: "https://duckburg-blogs.herokuapp.com/health"
+          checkstring: "ok"
+          rollbackonhealthcheckfailed: true
+          
+      - uses: actions/checkout@v2
+      - name: Bump version and push tag
+        if: ${{ github.event_name == 'push' && !contains(join(toJson(github.event.commits.*.message)), '#skip') }}
+        uses: anothrNick/github-tag-action@1.33.0
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          DEFAULT_BUMP: patch
