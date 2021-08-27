@@ -22,11 +22,11 @@ jobs:
       - name: Lint
         run: npm run lint
 
+      - name: Test frontend
+        run: npm run test:jest
+
       - name: Build frontend
         run: npm run build:ui
-
-      - name: Only run this if file ./build/index.html exists
-        run: '(test -f ./build/index.html && echo ./build/index.html exists) || echo ./build/index.html does not exist, skipping step'
 
       - name: Deploy to Heroku
         if: ${{ github.event_name == 'push' && !contains(join(toJson(github.event.commits.*.message)), '#skip') }}
