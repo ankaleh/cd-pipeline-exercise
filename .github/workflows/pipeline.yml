@@ -30,7 +30,8 @@ jobs:
           wait-on: 'http://localhost:3000, http://localhost:3001'
           wait-on-timeout: 300
           command: npm run test:e2e
-      
+        env:
+          TEST_MONGODB_URI: ${{secrets.TEST_MONGODB_URI}}
       - name: Build frontend
         run: npm run build:ui
 
