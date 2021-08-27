@@ -42,7 +42,7 @@ if (process.env.NODE_ENV === 'test') {
 if (process.env.NODE_ENV === 'production') {
   const BUILD_PATH = path.resolve(__dirname, './build')
   console.log('polku buildiin: ', BUILD_PATH) // eslint-disable-line
-  app.use('build')
+  app.use(express.static('build'))
   //app.use(express.static('build'))
   app.get('*', (req,res) => {
     res.sendFile(path.join(__dirname, 'build', 'index.html'))
