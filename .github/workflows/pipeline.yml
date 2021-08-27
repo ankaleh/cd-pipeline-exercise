@@ -22,18 +22,16 @@ jobs:
       - name: Lint
         run: npm run lint
 
-      - name: E2E tests
-        uses: cypress-io/github-action@v2
-        with: 
-          working-directory: frontend
-          start: npm start, npm run start:test --prefix ../
-          wait-on: 'http://localhost:3000'
-          wait-on-timeout: 300
-          command: npm run test:e2e
-        env:
-          TEST_MONGODB_URI: ${{secrets.TEST_MONGODB_URI}}
-          SECRET: ${{secrets.SECRET}}
       - name: Build frontend
         run: npm run build:ui
 
-    
+      - name: Deploy to Heroku
+        if: ${{ github.event_name == 'push' && !contains(join(toJson(github.event.commits.*.message)), '#skip') }}
+        uses: akhileshns/heroku-deploy@v3.12.12
+        with:
+          heroku_api_key: ${{secrets.HEROKU_API_KEY}}
+          heroku_app_name: "duckburg-blogs" #Must be unique in Heroku
+          heroku_email: ${{secrets.MAIL}}
+          #healthcheck: ""
+          #checkstring: "ok"
+          #rollbackonhealthcheckfailed: true
