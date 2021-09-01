@@ -1,6 +1,10 @@
 # Duckburg's blogs - exercise for building CI/CD-pipeline
 
-This repository is for the [Full Stack Open 2021 course](https://fullstackopen.com/en/) ([part 11](https://fullstackopen.com/en/part11)). The aim was to build CI/CD-pipeline for some application. Here is used the blog app that was built in parts [4](https://github.com/ankaleh/full-stack-osa4-blogilista) and [5](https://github.com/ankaleh/full-stack-osa5-bloglist-fronted). 
+This repository is for the [Full Stack Open 2021 course](https://fullstackopen.com/en/) ([part 11](https://fullstackopen.com/en/part11)). 
+
+([To the other repository of the course](https://github.com/ankaleh/full-stack-open-pokedex).)
+
+The aim of this exercise was to build CI/CD-pipeline for some application. Here is used the blog app that was built in parts [4](https://github.com/ankaleh/full-stack-osa4-blogilista) and [5](https://github.com/ankaleh/full-stack-osa5-bloglist-fronted). 
 
 [Duckburg's blogs](https://duckburg-blogs.herokuapp.com/) application is for saving and liking blogs of Duckburg. Donald Duck and Goofy have already registered: Donald Duck's username is "akuankka" and password "kosla313" while Goofy's username is "hessuhopo" and password "höhöö".
 
